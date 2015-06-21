@@ -23,6 +23,19 @@ AWS_ACCESS_KEY_ID - AWS access key id
 AWS_SECRET_ACCESS_KEY - AWS secret access key
 ```
 
+## Hosting
+
+You can easily host the server on Heroku.
+
+```
+heroku create
+git push heroku master
+```
+
+Then change the `HOST` in your Gyazo client.
+
+That's it!
+
 ## Contributing
 
 1. Fork it ( https://github.com/bitjourney/gyazotra/fork )

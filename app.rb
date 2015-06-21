@@ -4,7 +4,7 @@ class App < Sinatra::Base
   register Sinatra::Reloader
 
   post '/' do
-    object = s3.bucket(ENV['S3_BUCKET'].object(filename(params))
+    object = s3.bucket(ENV['S3_BUCKET']).object(filename(params))
     object.upload_file(params[:imagedata][:tempfile], acl: acl)
     object.public_url
   end

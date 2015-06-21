@@ -43,3 +43,6 @@ DEPENDENCIES
   foreman!
   sinatra!
   sinatra-contrib!
+
+BUNDLED WITH
+   1.10.4

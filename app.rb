@@ -3,10 +3,6 @@ require 'aws-sdk-core'
 class App < Sinatra::Base
   register Sinatra::Reloader
 
-  get '/' do
-    'hello'
-  end
-
   post '/' do
     object = s3.bucket(ENV['S3_BUCKET']).object(filename(params))
     object.upload_file(params[:imagedata][:tempfile], acl: acl)

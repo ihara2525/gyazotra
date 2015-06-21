@@ -19,13 +19,13 @@ Capture!
 
 ```
 S3_BUCKET - S3 bucket name
-AWS_ACCESS_KEY - AWS access key
+AWS_ACCESS_KEY_ID - AWS access key id
 AWS_SECRET_ACCESS_KEY - AWS secret access key
 ```
 
 ## Contributing
 
-1. Fork it ( https://github.com/bitjourney/ruboty-trello/fork )
+1. Fork it ( https://github.com/bitjourney/gyazotra/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

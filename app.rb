@@ -3,12 +3,8 @@ require 'aws-sdk-core'
 class App < Sinatra::Base
   register Sinatra::Reloader
 
-  get '/' do
-    'hello'
-  end
-
   post '/' do
-    object = s3.bucket(ENV['S3_BUCKET']).object(filename(params))
+    object = s3_bucket.object(filename(params))
     object.upload_file(params[:imagedata][:tempfile], acl: acl)
     object.public_url
   end
@@ -17,7 +13,15 @@ class App < Sinatra::Base
 
   def s3
       @s3 ||= Aws::S3::Resource.new(region: 'ap-northeast-1',
-                                    credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY'], ENV['AWS_SECRET_ACCESS_KEY']))
+                                    credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']))
+  end
+
+  def s3_bucket
+    @s3_bucket ||= begin
+      s3_bucket = s3.bucket(ENV['S3_BUCKET'])
+      s3_bucket = s3.create_bucket(bucket: ENV['S3_BUCKET']) unless s3_bucket.exists?
+      s3_bucket
+    end
   end
 
   def filename(params)
